@@ -1,0 +1,43 @@
+[
+    {
+        "id": "1",
+        "name": "Cartagena Hotel",
+        "description": "⭐⭐⭐⭐ (4) - Disfruta de una increíble vista al mar",
+        "rooms": [
+            "1",
+            "2",
+            "3"
+        ],
+        "city": "Cartagena"
+    },
+    {
+        "id": "2",
+        "name": "Santa Marta Hotel",
+        "description": "⭐⭐⭐⭐⭐ (5) - Ofrecemos distintos tours por la bahía",
+        "rooms": [
+            "4",
+            "5"
+        ],
+        "city": "Santa Marta"
+    },
+    {
+        "id": "3",
+        "name": "Medellín Hotel",
+        "description": "⭐⭐⭐⭐ (4) - Ven y come una bandeja Paisa",
+        "rooms": [
+            "6",
+            "7"
+        ], 
+        "city": "Medellin"
+    },
+    {
+        "id": "4",
+        "name": "Montería Hotel",
+        "description": "⭐⭐⭐⭐⭐ (5) - Tenemos suits familiares a excelentes precios",
+        "rooms": [
+            "8",
+            "9"
+        ],
+        "city": "Monteria"
+    }
+]
