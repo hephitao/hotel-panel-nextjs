@@ -6,6 +6,7 @@ export interface Hotel {
     name: string;
     description: string;
     rooms: string[];
+    city: string;
 }
 
 interface HotelsState {

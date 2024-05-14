@@ -10,7 +10,7 @@ export const store = configureStore({
         auth: authSlice.reducer,
         hotels: hotelsSlice.reducer,
         rooms: roomSlice,
-        search: searchSlice.reducer,
+        search: searchSlice,
         bookings: bookingsSlice.reducer,
     },
 });

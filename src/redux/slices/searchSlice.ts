@@ -21,30 +21,28 @@ const initialState: SearchState = {
     endDate: '',
     guests: 1,
   },
-  results: [],
+  results: hotelsData,
 };
 
 const searchSlice = createSlice({
   name: "search",
   initialState,
   reducers: {
-    // Actualiza los criterios de búsqueda
-    updateSearchCriteria: (state, action: PayloadAction<SearchCriteria>) => {
+    performSearch: (state, action: PayloadAction<SearchCriteria>) => {
       state.criteria = action.payload;
-    },
-    // Realiza la búsqueda basada en los criterios actuales
-    searchHotels: (state, action: PayloadAction<SearchCriteria>) => {
-      // Actualiza los criterios de búsqueda
-      state.criteria = action.payload;
-      // Filtra los hoteles basados en los criterios
-      state.results = hotelsData.filter((hotel) => {
-        // Implementa la lógica de filtrado aquí
-        // Por ejemplo, filtrar por ciudad
-        return hotel.city === state.criteria.city;
-      });
+      if (state.criteria.city) {
+        // Si se proporciona una ciudad, filtra los hoteles que coincidan
+        state.results = hotelsData.filter((hotel) => {
+          return hotel.city.toLowerCase() === state.criteria.city.toLowerCase();
+        });
+      } else {
+        // Si no se proporciona una ciudad, muestra todos los hoteles
+        state.results = hotelsData;
+      }
     },
   },
 });
 
-export const { updateSearchCriteria, searchHotels } = searchSlice.actions;
+// Exporta solo la acción combinada
+export const { performSearch } = searchSlice.actions;
 export default searchSlice.reducer;
