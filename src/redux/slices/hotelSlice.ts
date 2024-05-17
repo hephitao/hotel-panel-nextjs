@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import hotelsData from "../../data/hotels.json";
+import { RootState } from "../store"; // Asegúrate de importar RootState desde el archivo correcto
 
 export interface Hotel {
     id: string;
@@ -7,6 +8,8 @@ export interface Hotel {
     description: string;
     rooms: string[];
     city: string;
+    status: string;
+    imgurl: string;
 }
 
 interface HotelsState {
@@ -32,8 +35,15 @@ const hotelsSlice = createSlice({
                 state.details = null;
             }
         },
+        addHotel: (state, action: PayloadAction<Hotel>) => {
+            state.data.push(action.payload);
+        },
     },
 });
 
-export const { fetchHotelDetails } = hotelsSlice.actions;
-export default hotelsSlice;
+export const { fetchHotelDetails, addHotel } = hotelsSlice.actions;
+
+// Selector para obtener los hoteles del estado
+export const selectHotels = (state: RootState) => state.hotels.data;
+
+export default hotelsSlice.reducer;

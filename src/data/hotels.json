@@ -1,43 +1,59 @@
 [
     {
         "id": "1",
-        "name": "Cartagena Hotel",
-        "description": "⭐⭐⭐⭐ (4) - Disfruta de una increíble vista al mar",
+        "name": "Hotel los Delfines",
+        "description": "Disfruta de una increíble vista al mar",
+        "calification": "⭐⭐⭐⭐ (4)",
         "rooms": [
             "1",
             "2",
             "3"
         ],
-        "city": "Cartagena"
+        "city": "Cartagena",
+        "status": "active",
+        "imgurl": "https://i.ibb.co/n7jjty1/demohotels1.jpg",
+        "admin": "agente@gmail.com"
     },
     {
         "id": "2",
-        "name": "Santa Marta Hotel",
-        "description": "⭐⭐⭐⭐⭐ (5) - Ofrecemos distintos tours por la bahía",
+        "name": "Hotel las Ballenas",
+        "description": "Ofrecemos distintos tours por la bahía",
+        "calification": "⭐⭐⭐⭐⭐ (5)",
         "rooms": [
             "4",
             "5"
         ],
-        "city": "Santa Marta"
+        "city": "Santa Marta",
+        "status": "active",
+        "imgurl": "https://i.ibb.co/C6QQPzB/demohotels2.jpg",
+        "admin": "agente@gmail.com"
     },
     {
         "id": "3",
-        "name": "Medellín Hotel",
-        "description": "⭐⭐⭐⭐ (4) - Ven y come una bandeja Paisa",
+        "name": "Hotel los Caballos",
+        "description": "Ven y come una bandeja Paisa",
+        "calification": "⭐⭐⭐⭐ (4)",
         "rooms": [
             "6",
             "7"
         ],
-        "city": "Medellin"
+        "city": "Medellin",
+        "status": "active",
+        "imgurl": "https://i.ibb.co/pZVpN1p/demohotels3.jpg",
+        "admin": "agente@gmail.com"
     },
     {
         "id": "4",
-        "name": "Montería Hotel",
-        "description": "⭐⭐⭐⭐⭐ (5) - Tenemos suits familiares a excelentes precios",
+        "name": "Hotel los Toros",
+        "description": "Tenemos suits familiares a excelentes precios",
+        "calification": "⭐⭐⭐⭐⭐ (5)",
         "rooms": [
             "8",
             "9"
         ],
-        "city": "Monteria"
+        "city": "Monteria",
+        "status": "active",
+        "imgurl": "https://i.ibb.co/hs5nbTh/demohotels4.jpg",
+        "admin": "otroagente@gmail.com"
     }
 ]

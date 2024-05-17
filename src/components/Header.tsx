@@ -1,11 +1,11 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { logout } from "../redux/slices/authSlice";
-import { RootState } from "../redux/store"; // Assuming RootState is your root state type
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { logout } from '../redux/slices/authSlice';
+import { RootState } from '../redux/store';
 
 const Header: React.FC = () => {
-    const isLoggedIn = useSelector((state: RootState) => (state.auth as { isLoggedIn: boolean }).isLoggedIn);
+    const { isLoggedIn, userType } = useSelector((state: RootState) => state.auth);
     const dispatch = useDispatch();
 
     const handleLogout = () => {
@@ -14,7 +14,7 @@ const Header: React.FC = () => {
 
     return (
         <header className="bg-rose-600 text-white py-4">
-            <nav className="container mx-auto flex justify-between">
+            <nav className="container mx-auto flex justify-between items-center">
                 <ul className="flex space-x-4">
                     <li>
                         <Link to="/" className="hover:text-gray-300">
@@ -26,15 +26,27 @@ const Header: React.FC = () => {
                             Mis reservas
                         </Link>
                     </li>
+                    {userType === 'agente' && (
+                        <li>
+                            <Link to="/hotel-admin" className="hover:text-gray-300">
+                                Administrar Hoteles
+                            </Link>
+                        </li>
+                    )}
                 </ul>
                 <div>
                     {isLoggedIn ? (
-                        <button
-                            onClick={handleLogout}
-                            className="hover:text-gray-300 focus:outline-none"
-                        >
-                            Logout
-                        </button>
+                        <div className="flex items-center space-x-4">
+                            <span className="font-semibold">
+                                Bienvenido {userType === 'huesped' ? 'Huésped' : 'Agente'}
+                            </span>
+                            <button
+                                onClick={handleLogout}
+                                className="hover:text-gray-300 focus:outline-none"
+                            >
+                                Logout
+                            </button>
+                        </div>
                     ) : (
                         <Link to="/login" className="hover:text-gray-300">
                             Login

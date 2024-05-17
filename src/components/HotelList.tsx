@@ -18,9 +18,9 @@ const HotelList: React.FC = () => {
                         className="bg-white rounded-lg shadow-md overflow-hidden group"
                     >
                         <img
-                            src={`src/assets/img/${hotel.id}.jpg`}
+                            src={hotel.imgurl}
                             alt={hotel.name}
-                            className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300 ease-in-out"
+                            className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500 ease-in-out"
                         />
                         <div className="p-4">
                             <h3 className="text-xl font-semibold mb-2">{hotel.name}</h3>

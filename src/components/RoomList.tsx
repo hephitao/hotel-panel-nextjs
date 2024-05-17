@@ -16,25 +16,25 @@ const RoomList: React.FC<RoomListProps> = ({ hotelId }) => {
 
     return (
         <div>
-            <h3 className="text-2xl font-bold mb-4">Rooms</h3>
+            <h3 className="text-2xl font-bold mb-4">Habitaciónes</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                {rooms?.map((room) => (
+                {rooms?.map((room) => room && (
                     <div
-                        key={room?.id}
+                        key={room.id}
                         className="bg-white rounded-lg shadow-md overflow-hidden"
                     >
                         <img
-                            src={`https://source.unsplash.com/random/400x300?room=${room?.id}`}
-                            alt={room?.name}
+                            src={room.imgurl}
+                            alt={room.name}
                             className="w-full h-48 object-cover"
                         />
                         <div className="p-4">
-                            <h4 className="text-xl font-semibold mb-2">{room?.name}</h4>
-                            <p className="text-gray-700 mb-4">{room?.description}</p>
+                            <h4 className="text-xl font-semibold mb-2">{room.name}</h4>
+                            <p className="text-gray-700 mb-4">{room.description}</p>
                             <p className="text-gray-700 font-semibold mb-4">
-                                Price: ${room?.price} per night
+                                Precio: ${room.price} COP x Noche
                             </p>
-                            {room?.id && <BookingForm hotelId={hotelId} roomId={room.id} />}
+                            <BookingForm hotelId={hotelId} roomId={room.id.toString()} />
                         </div>
                     </div>
                 ))}

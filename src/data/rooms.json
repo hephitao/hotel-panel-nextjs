@@ -1,56 +1,83 @@
 [
     {
         "id": "1",
-        "name": "Deluxe Room",
-        "description": "A spacious room with a king-size bed.",
-        "price": 150
+        "name": "Habitación parejas",
+        "description": "🚽1 baño 🛏️ 1 cama 📺 tv satelital 🛜 wifi",
+        "price": 80000,
+        "status": "active",
+        "imgurl": "https://i.ibb.co/dsZDZgZ/demo-rooms-1.png",
+        "capacity": 2
     },
     {
         "id": "2",
-        "name": "Standard Room",
-        "description": "A comfortable room with a queen-size bed.",
-        "price": 100
+        "name": "Familiar",
+        "description": "🚽1 baño 🛏️ 2 cama 📺 tv satelital 🛜 wifi",
+        "price": 130000,
+        "status": "active",
+        "imgurl": "https://i.ibb.co/bNYN01g/demo-rooms-2.webp",
+        "capacity": 4
     },
     {
         "id": "3",
-        "name": "Suite",
-        "description": "A luxurious suite with a separate living area.",
-        "price": 250
+        "name": "Familiar grande",
+        "description": "🚽2 baño 🛏️ 4 camas 📺 tv satelital 🛜 wifi",
+        "price": 250000,
+        "status": "active",
+        "imgurl": "https://i.ibb.co/G0Pz0J8/demo-rooms-3.jpg",
+        "capacity": 10
     },
     {
         "id": "4",
-        "name": "Ocean View Room",
-        "description": "A room with a beautiful view of the ocean.",
-        "price": 120
+        "name": "Familiar",
+        "description": "🚽1 baño 🛏️ 1 cama 📺 tv satelital 🛜 wifi",
+        "price": 120000,
+        "status": "active",
+        "imgurl": "https://i.ibb.co/1Z8Cq1d/demo-rooms-4.jpg",
+        "capacity": 5
     },
     {
         "id": "5",
-        "name": "Family Room",
-        "description": "A spacious room with two queen-size beds.",
-        "price": 180
+        "name": "Sencilla",
+        "description": "🚽1 baño 🛏️ 1 cama 📺 tv satelital 🛜 wifi",
+        "price": 85000,
+        "status": "active",
+        "imgurl": "https://i.ibb.co/YRrC29V/demo-rooms-5.webp",
+        "capacity": 2
     },
     {
         "id": "6",
-        "name": "Single Room",
-        "description": "A cozy room with a single bed.",
-        "price": 80
+        "name": "Sencilla",
+        "description": "🚽1 baño 🛏️ 1 cama 📺 tv satelital 🛜 wifi",
+        "price": 80000,
+        "status": "active",
+        "imgurl": "https://i.ibb.co/hZqDPLd/demo-rooms-6.webp",
+        "capacity": 2
     },
     {
         "id": "7",
-        "name": "Executive Suite",
-        "description": "A luxurious suite with a private balcony.",
-        "price": 300
+        "name": "Sencilla",
+        "description": "🚽1 baño 🛏️ 1 cama 📺 tv satelital 🛜 wifi",
+        "price": 300000,
+        "status": "active",
+        "imgurl": "https://i.ibb.co/rwQQsz6/demo-rooms-7.jpg",
+        "capacity": 2
     },
     {
         "id": "8",
-        "name": "Mountain View Room",
-        "description": "A room with a stunning view of the mountains.",
-        "price": 140
+        "name": "Suite VIP",
+        "description": "🚽2 baño 🛏️ 3 cama 📺 tv satelital 🛋️ 1 Sofa cama 🛜 wifi",
+        "price": 140000,
+        "status": "active",
+        "imgurl": "https://i.ibb.co/QkSkLbt/demo-rooms-8.jpg",
+        "capacity": 8
     },
     {
         "id": "9",
-        "name": "Honeymoon Suite",
-        "description": "A romantic suite for couples.",
-        "price": 280
+        "name": "Familiar",
+        "description": "🚽1 baño 🛏️ 2 cama 📺 tv satelital 🛜 wifi",
+        "price": 230000,
+        "status": "active",
+        "imgurl": "https://i.ibb.co/kXpb618/demo-rooms-9.jpg",
+        "capacity": 4
     }
 ]

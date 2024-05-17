@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { performSearch } from "../redux/slices/searchSlice";
@@ -13,6 +13,14 @@ const HotelSearch: React.FC = () => {
     const cities = useSelector((state: RootState) =>
         state.hotels.data.map((hotel) => hotel.city)
     );
+
+    const today = new Date().toISOString().split('T')[0];
+
+    useEffect(() => {
+        if (startDate && new Date(startDate) > new Date(endDate)) {
+            setEndDate(startDate);
+        }
+    }, [startDate, endDate]);
 
     const uniqueCities = Array.from(new Set(cities));
 
@@ -29,26 +37,28 @@ const HotelSearch: React.FC = () => {
                     onChange={(e) => setCity(e.target.value)}
                     className="border p-2 rounded-md"
                 >
-                    <option value="">Seleccione una ciudad</option>
+                    <option value="">Todos los hoteles disponibles</option>
                     {uniqueCities.map((city, index) => (
                         <option key={index} value={city}>
                             {city}
                         </option>
                     ))}
                 </select>
-                Llegada:
+                Salida:
                 <input
                     type="date"
                     value={startDate}
                     onChange={(e) => setStartDate(e.target.value)}
                     className="border p-2 rounded-md"
+                    min={today}
                 />
-                Salida:
+                Llegada:
                 <input
                     type="date"
                     value={endDate}
                     onChange={(e) => setEndDate(e.target.value)}
                     className="border p-2 rounded-md"
+                    min={startDate}
                 />
                 Cantidad personas:
                 <div className="flex items-center">
@@ -60,12 +70,13 @@ const HotelSearch: React.FC = () => {
                     </button>
                     <span className="border-t border-b p-2">{guests}</span>
                     <button
-                        onClick={() => setGuests(guests + 1)}
+                        onClick={() => setGuests(guests + 1 > 10 ? 10 : guests + 1)}
                         className="bg-gray-300 text-white p-2 rounded-r-md hover:bg-gray-500 transition-colors"
                     >
                         +
                     </button>
                 </div>
+
                 <button
                     onClick={handleSearch}
                     className="bg-rose-400 text-white py-2 px-4 rounded-md hover:bg-rose-600 transition-colors"

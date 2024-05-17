@@ -25,7 +25,7 @@ const HotelDetails: React.FC = () => {
     <div className="container mx-auto py-8">
       <div className="bg-white rounded-lg shadow-md overflow-hidden">
         <img
-          src={`https://source.unsplash.com/random/800x600?hotel=${hotel.id}`}
+          src={hotel.imgurl}
           alt={hotel.name}
           className="w-full h-64 object-cover"
         />

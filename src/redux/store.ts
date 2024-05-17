@@ -1,5 +1,5 @@
-import { configureStore } from "@reduxjs/toolkit";
-import authSlice from "./slices/authSlice";
+import { configureStore, Store } from "@reduxjs/toolkit";
+import authReducer from "./slices/authSlice";
 import bookingsSlice from "./slices/bookingSlice";
 import hotelsSlice from "./slices/hotelSlice";
 import roomSlice from "./slices/roomSlice";
@@ -7,15 +7,24 @@ import searchSlice from "./slices/searchSlice";
 
 export const store = configureStore({
     reducer: {
-        auth: authSlice.reducer,
-        hotels: hotelsSlice.reducer,
+        auth: authReducer,
+        hotels: hotelsSlice,
         rooms: roomSlice,
         search: searchSlice,
         bookings: bookingsSlice.reducer,
     },
+    devTools: process.env.NODE_ENV !== 'production',
 });
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
+declare global {
+  interface Window {
+    store: Store;
+  }
+}
+
+if (process.env.NODE_ENV === 'development') {
+    window.store = store;
+}
+
 export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;

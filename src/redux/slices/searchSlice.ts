@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import hotelsData from "../../data/hotels.json";
-import { Hotel } from './hotelSlice';
+import { Hotel, addHotel } from './hotelSlice';
 
 interface SearchCriteria {
   city: string;
@@ -40,6 +40,11 @@ const searchSlice = createSlice({
         state.results = hotelsData;
       }
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(addHotel, (state, action) => {
+      state.results.push(action.payload);
+    });
   },
 });
 
