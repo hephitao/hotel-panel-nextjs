@@ -2,14 +2,15 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import BookingList from "./components/BookingList";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+import Footer from "./components/Common/Footer";
+import Header from "./components/Common/Header";
 import HotelDetails from "./components/HotelDetails";
 import HotelList from "./components/HotelList";
-import LoginForm from "./components/LoginForm";
-import HotelAdminLayout from "./components/HotelAdminLayout";
+import LoginForm from "./routes/LoginForm";
+import HotelAdminLayout from "./components/Admin/HotelAdminLayout";
 import CreateHotel from "./components/CreateHotel";
-import HotelAdminList from "./components/HotelAdminList";
+import HotelAdminList from "./components/Admin/HotelAdminList";
+import HotelEdit from './components/Admin/HotelEdit';
 import { Navigate } from 'react-router-dom';
 
 const App: React.FC = () => {
@@ -25,6 +26,7 @@ const App: React.FC = () => {
             <Route index element={<Navigate replace to="hotel-list" />} />
             <Route path="create-hotel" element={<CreateHotel />} />
             <Route path="hotel-list" element={<HotelAdminList />} />
+            <Route path="hotel-list/:hotelId" element={<HotelEdit />} />
           </Route>
           <Route path="/" element={<HotelList />} />
         </Routes>

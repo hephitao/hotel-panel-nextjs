@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../redux/store";
+import { RootState } from "../../redux/store";
 import { Link } from "react-router-dom";
 
 interface Hotel {
@@ -14,7 +14,7 @@ interface Hotel {
 }
 
 const HotelAdminList: React.FC = () => {
-    const hotels = useSelector((state: RootState) => state.hotels.data);
+    const hotels = useSelector((state: RootState) => state.hotels.allHotels);
 
     return (
         <div className="container mx-auto py-8">

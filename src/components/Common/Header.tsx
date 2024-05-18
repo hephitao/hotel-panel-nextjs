@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logout } from '../redux/slices/authSlice';
-import { RootState } from '../redux/store';
+import { logout } from '../../redux/slices/authSlice';
+import { RootState } from '../../redux/store';
 
 const Header: React.FC = () => {
     const { isLoggedIn, userType } = useSelector((state: RootState) => state.auth);

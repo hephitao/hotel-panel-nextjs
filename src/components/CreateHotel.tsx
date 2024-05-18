@@ -14,7 +14,7 @@ interface RoomForm {
 
 const CreateHotel: React.FC = () => {
     const dispatch = useDispatch();
-    const hotels = useSelector((state: RootState) => state.hotels.data);
+    const hotels = useSelector((state: RootState) => state.hotels.allHotels);
     const rooms = useSelector((state: RootState) => state.rooms.data);
     const [form, setForm] = useState<Hotel & { roomsForm: RoomForm[] }>({
         id: "",

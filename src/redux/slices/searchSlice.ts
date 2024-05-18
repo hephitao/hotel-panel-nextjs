@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import hotelsData from "../../data/hotels.json";
-import { Hotel, addHotel } from './hotelSlice';
+import { RootState } from '../store';
+import { createSelector } from 'reselect';
+//import { Hotel } from './hotelSlice';
 
 interface SearchCriteria {
   city: string;
@@ -11,7 +12,7 @@ interface SearchCriteria {
 
 interface SearchState {
   criteria: SearchCriteria;
-  results: Hotel[];
+  results: string[];
 }
 
 const initialState: SearchState = {
@@ -21,7 +22,7 @@ const initialState: SearchState = {
     endDate: '',
     guests: 1,
   },
-  results: hotelsData,
+  results: [],
 };
 
 const searchSlice = createSlice({
@@ -30,24 +31,18 @@ const searchSlice = createSlice({
   reducers: {
     performSearch: (state, action: PayloadAction<SearchCriteria>) => {
       state.criteria = action.payload;
-      if (state.criteria.city) {
-        // Si se proporciona una ciudad, filtra los hoteles que coincidan
-        state.results = hotelsData.filter((hotel) => {
-          return hotel.city.toLowerCase() === state.criteria.city.toLowerCase();
-        });
-      } else {
-        // Si no se proporciona una ciudad, muestra todos los hoteles
-        state.results = hotelsData;
-      }
     },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(addHotel, (state, action) => {
-      state.results.push(action.payload);
-    });
+    setResults: (state, action: PayloadAction<string[]>) => {
+      state.results = action.payload;
+    },
   },
 });
 
-// Exporta solo la acción combinada
-export const { performSearch } = searchSlice.actions;
+export const { performSearch, setResults } = searchSlice.actions;
 export default searchSlice.reducer;
+
+export const selectFilteredHotels = createSelector(
+  (state: RootState) => state.search.results,
+  (state: RootState) => state.hotels.allHotels,
+  (results, allHotels) => results.length === 0 ? allHotels : results.map(id => allHotels.find(hotel => hotel.id === id))
+);
