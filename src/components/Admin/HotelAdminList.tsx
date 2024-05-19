@@ -36,12 +36,18 @@ const HotelAdminList: React.FC = () => {
                             <td className="px-6 py-4 whitespace-nowrap">{hotel.description}</td>
                             <td className="px-6 py-4 whitespace-nowrap">{hotel.city}</td>
                             <td className="px-6 py-4 whitespace-nowrap">{hotel.status}</td>
-                            <td className="px-6 py-4 whitespace-nowrap">
+                            <td className="px-6 py-4 whitespace-nowrap space-x-2">
                                 <Link
                                     to={`/hotel-admin/hotel-list/${hotel.id}`}
                                     className="bg-rose-500 text-white py-2 px-4 rounded-md hover:bg-rose-700 transition-colors"
                                 >
                                     Editar Hotel
+                                </Link>
+                                <Link
+                                    to={`/hotel-admin/hotel-list/${hotel.id}/rooms`}
+                                    className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
+                                >
+                                    Editar Habitaciones
                                 </Link>
                             </td>
                         </tr>

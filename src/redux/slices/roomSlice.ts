@@ -1,8 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import roomsData from "../../data/rooms.json";
+import { RootState } from "../store";
 
 export interface Room {
     id: string;
+    //hotelId: string;
     name: string;
     description: string;
     price: number;
@@ -23,13 +25,24 @@ const roomSlice = createSlice({
     initialState,
     reducers: {
         addRoom: (state, action: PayloadAction<Omit<Room, 'id'>>) => {
-            // Encuentra el ID máximo actual y suma 1 para el nuevo ID
             const newId = state.data.reduce((maxId, room) => Math.max(parseInt(room.id), maxId), 0) + 1;
-            // Agrega la nueva habitación con el nuevo ID convertido a string
             state.data.push({ id: newId.toString(), ...action.payload });
+        },
+        updateRoom: (state, action: PayloadAction<Room>) => {
+            const index = state.data.findIndex(room => room.id === action.payload.id);
+            if (index !== -1) {
+                state.data[index] = action.payload;
+            }
+        },
+        deleteRoom: (state, action: PayloadAction<string>) => {
+            state.data = state.data.filter(room => room.id !== action.payload);
         },
     },
 });
 
-export const { addRoom } = roomSlice.actions;
+export const { addRoom, updateRoom, deleteRoom } = roomSlice.actions;
+export const selectAllRooms = (state: RootState) => state.rooms.data;
+// export const selectRoomsByHotelId = (state: RootState, hotelId: string) =>
+//     state.rooms.data.filter(room => room.hotelId === hotelId);
+
 export default roomSlice.reducer;

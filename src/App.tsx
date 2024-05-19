@@ -12,6 +12,7 @@ import CreateHotel from "./components/CreateHotel";
 import HotelAdminList from "./components/Admin/HotelAdminList";
 import HotelEdit from './components/Admin/HotelEdit';
 import { Navigate } from 'react-router-dom';
+import RoomEdit from './components/Admin/RoomEdit';
 
 const App: React.FC = () => {
   return (
@@ -27,6 +28,7 @@ const App: React.FC = () => {
             <Route path="create-hotel" element={<CreateHotel />} />
             <Route path="hotel-list" element={<HotelAdminList />} />
             <Route path="hotel-list/:hotelId" element={<HotelEdit />} />
+            <Route path="hotel-list/:hotelId/rooms" element={<RoomEdit />} />
           </Route>
           <Route path="/" element={<HotelList />} />
         </Routes>

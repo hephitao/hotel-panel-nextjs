@@ -9,9 +9,9 @@ interface RoomListProps {
 
 const RoomList: React.FC<RoomListProps> = ({ hotelId }) => {
     const rooms = useSelector((state: RootState) =>
-        state.hotels.details?.rooms.map((roomId) =>
-            state.rooms.data.find((room) => room.id === roomId)
-        )
+        state.hotels.details?.rooms
+            .map((roomId) => state.rooms.data.find((room) => room.id === roomId))
+            .filter((room) => room && room.status === 'active')
     );
 
     return (
@@ -26,9 +26,10 @@ const RoomList: React.FC<RoomListProps> = ({ hotelId }) => {
                         <img
                             src={room.imgurl}
                             alt={room.name}
-                            className="w-full h-48 object-cover"
+                            className="w-full h-48 object-cover hover:scale-110 transition-transform duration-500 ease-in-out"
+                            // className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500 ease-in-out"
                         />
-                        <div className="p-4">
+                        <div className="p-6">
                             <h4 className="text-xl font-semibold mb-2">{room.name}</h4>
                             <p className="text-gray-700 mb-4">{room.description}</p>
                             <p className="text-gray-700 font-semibold mb-4">

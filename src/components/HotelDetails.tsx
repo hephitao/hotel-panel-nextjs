@@ -24,11 +24,16 @@ const HotelDetails: React.FC = () => {
   return (
     <div className="container mx-auto py-8">
       <div className="bg-white rounded-lg shadow-md overflow-hidden">
-        <img
-          src={hotel.imgurl}
-          alt={hotel.name}
-          className="w-full h-64 object-cover"
-        />
+        <div className="relative group">
+          <img
+            src={hotel.imgurl}
+            alt={hotel.name}
+            className="w-full h-64 object-cover transition-transform transform"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
+        </div>
+
+        {/* <div className="absolute inset-0 bg-white bg-opacity-25 backdrop-blur-md rounded-lg" /> */}
         <div className="p-6">
           <h2 className="text-3xl font-bold mb-4">{hotel.name}</h2>
           <p className="text-gray-700 mb-6">{hotel.description}</p>

@@ -44,5 +44,10 @@ export default searchSlice.reducer;
 export const selectFilteredHotels = createSelector(
   (state: RootState) => state.search.results,
   (state: RootState) => state.hotels.allHotels,
-  (results, allHotels) => results.length === 0 ? allHotels : results.map(id => allHotels.find(hotel => hotel.id === id))
+  (results, allHotels) =>
+    results.length === 0
+      ? allHotels.filter((hotel) => hotel.status === 'active')
+      : results
+          .map((id) => allHotels.find((hotel) => hotel.id === id))
+          .filter((hotel) => hotel?.status === 'active')
 );
