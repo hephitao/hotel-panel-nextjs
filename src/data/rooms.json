@@ -1,83 +1,110 @@
 [
     {
         "id": "1",
-        "name": "Habitación parejas",
+        "name": "Habitación #1",
         "description": "🚽1 baño 🛏️ 1 cama 📺 tv satelital 🛜 wifi",
         "price": 80000,
         "status": "active",
         "imgurl": "https://i.ibb.co/dsZDZgZ/demo-rooms-1.png",
-        "capacity": 2
+        "capacity": 2,
+        "type": "Sencilla",
+        "location": "1er Piso",
+        "tax": 4
     },
     {
         "id": "2",
-        "name": "Familiar",
+        "name": "Habitación #2",
         "description": "🚽1 baño 🛏️ 2 cama 📺 tv satelital 🛜 wifi",
         "price": 130000,
         "status": "active",
         "imgurl": "https://i.ibb.co/bNYN01g/demo-rooms-2.webp",
-        "capacity": 4
+        "capacity": 4,
+        "type": "Doble",
+        "location": "2do Piso",
+        "tax": 5
     },
     {
         "id": "3",
-        "name": "Familiar grande",
+        "name": "Habitación #3",
         "description": "🚽2 baño 🛏️ 4 camas 📺 tv satelital 🛜 wifi",
         "price": 250000,
         "status": "active",
         "imgurl": "https://i.ibb.co/G0Pz0J8/demo-rooms-3.jpg",
-        "capacity": 10
+        "capacity": 10,
+        "type": "Familiar",
+        "location": "1er Piso",
+        "tax": 14
     },
     {
         "id": "4",
-        "name": "Familiar",
+        "name": "Habitación #1",
         "description": "🚽1 baño 🛏️ 1 cama 📺 tv satelital 🛜 wifi",
         "price": 120000,
         "status": "active",
         "imgurl": "https://i.ibb.co/1Z8Cq1d/demo-rooms-4.jpg",
-        "capacity": 5
+        "capacity": 5,
+        "type": "Doble",
+        "location": "3er Piso",
+        "tax": 4
     },
     {
         "id": "5",
-        "name": "Sencilla",
+        "name": "Habitación #2",
         "description": "🚽1 baño 🛏️ 1 cama 📺 tv satelital 🛜 wifi",
         "price": 85000,
         "status": "active",
         "imgurl": "https://i.ibb.co/YRrC29V/demo-rooms-5.webp",
-        "capacity": 2
+        "capacity": 2,
+        "type": "Sencilla",
+        "location": "3er Piso",
+        "tax": 6
     },
     {
         "id": "6",
-        "name": "Sencilla",
+        "name": "Habitación #1",
         "description": "🚽1 baño 🛏️ 1 cama 📺 tv satelital 🛜 wifi",
         "price": 80000,
         "status": "active",
         "imgurl": "https://i.ibb.co/hZqDPLd/demo-rooms-6.webp",
-        "capacity": 2
+        "capacity": 2,
+        "type": "Sencilla",
+        "location": "1er Piso",
+        "tax": 12
     },
     {
         "id": "7",
-        "name": "Sencilla",
+        "name": "Habitación #2",
         "description": "🚽1 baño 🛏️ 1 cama 📺 tv satelital 🛜 wifi",
         "price": 300000,
         "status": "active",
         "imgurl": "https://i.ibb.co/rwQQsz6/demo-rooms-7.jpg",
-        "capacity": 2
+        "capacity": 2,
+        "type": "Sencilla",
+        "location": "1er Piso",
+        "tax": 6
     },
     {
         "id": "8",
-        "name": "Suite VIP",
+        "name": "Habitación #1",
         "description": "🚽2 baño 🛏️ 3 cama 📺 tv satelital 🛋️ 1 Sofa cama 🛜 wifi",
         "price": 140000,
         "status": "active",
         "imgurl": "https://i.ibb.co/QkSkLbt/demo-rooms-8.jpg",
-        "capacity": 8
+        "capacity": 8,
+        "type": "Familiar",
+        "location": "2do Piso",
+        "tax": 5
     },
     {
         "id": "9",
-        "name": "Familiar",
+        "name": "Habitación #2",
         "description": "🚽1 baño 🛏️ 2 cama 📺 tv satelital 🛜 wifi",
         "price": 230000,
         "status": "active",
         "imgurl": "https://i.ibb.co/kXpb618/demo-rooms-9.jpg",
-        "capacity": 4
+        "capacity": 4,
+        "type": "Doble",
+        "location": "1er Piso",
+        "tax": 0
     }
 ]

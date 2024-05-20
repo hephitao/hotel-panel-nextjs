@@ -1,27 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { bookRoom } from "../redux/slices/bookingSlice";
-import PopupForm from './PopupForm';
-
-interface BookingFormProps {
-    hotelId: string;
-    roomId: string | undefined;
-}
-
-interface FormValues {
-    nombre: string;
-    apellidos: string;
-    fechaNacimiento: string;
-    genero: string;
-    tipoDocumento: 'CC' | 'Pasaporte' | 'Tarjeta de Identidad';
-    documento: string;
-    email: string;
-    telefono: string;
-    contactoEmergencia: {
-        nombreCompleto: string;
-        telefono: string;
-    };
-}
+import BookingPopupForm from './BookingPopupForm';
+import { BookingFormProps, FormValues } from '../types/index';
 
 const BookingForm: React.FC<BookingFormProps> = ({ hotelId, roomId }) => {
     const [checkinDate, setCheckinDate] = useState("");
@@ -46,7 +27,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ hotelId, roomId }) => {
                 })
             );
             setIsPopupOpen(true);
-            setAlertMessage(""); // Clear the alert message when dates are selected
+            setAlertMessage("");
         }
     };
 
@@ -104,11 +85,11 @@ const BookingForm: React.FC<BookingFormProps> = ({ hotelId, roomId }) => {
                     type="submit"
                     className="bg-rose-500 text-white py-2 px-4 rounded-md hover:bg-rose-700 transition-colors mt-4"
                 >
-                    Completar datos
+                    Confirmar Reserva
                 </button>
             </form>
             {isPopupOpen && (
-                <PopupForm onClose={handlePopupClose} onSubmit={handlePopupSubmit} />
+                <BookingPopupForm onClose={handlePopupClose} onSubmit={handlePopupSubmit} />
             )}
         </>
     );

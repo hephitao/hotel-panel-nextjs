@@ -1,28 +1,8 @@
 import React, { useState } from "react";
+import EmailSender from './EmailSender';
+import { FormValues, BookingPopupFormProps } from '../types/index';
 
-interface ContactoEmergencia {
-    nombreCompleto: string;
-    telefono: string;
-}
-
-interface FormValues {
-    nombre: string;
-    apellidos: string;
-    fechaNacimiento: string;
-    genero: string;
-    tipoDocumento: "CC" | "Pasaporte" | "Tarjeta de Identidad";
-    documento: string;
-    email: string;
-    telefono: string;
-    contactoEmergencia: ContactoEmergencia;
-}
-
-interface PopupFormProps {
-    onClose: () => void;
-    onSubmit: (values: FormValues) => void;
-}
-
-const PopupForm: React.FC<PopupFormProps> = ({ onClose, onSubmit }) => {
+const BookingPopupForm: React.FC<BookingPopupFormProps> = ({ onClose, onSubmit }) => {
     const [formValues, setFormValues] = useState<FormValues>({
         nombre: "",
         apellidos: "",
@@ -65,6 +45,15 @@ const PopupForm: React.FC<PopupFormProps> = ({ onClose, onSubmit }) => {
         e.preventDefault();
         onSubmit(formValues);
     };
+
+    const handleEmailSuccess = () => {
+        console.log("Email sent successfully!");
+    };
+
+    const handleEmailError = (error: Error) => {
+        console.error("Error sending email:", error.message);
+    };
+
 
     return (
         <div className="fixed inset-0 bg-gray-500 bg-opacity-75 overflow-y-auto">
@@ -278,6 +267,11 @@ const PopupForm: React.FC<PopupFormProps> = ({ onClose, onSubmit }) => {
                                 </div>
                             </div>
                         </form>
+                        <EmailSender
+                            formValues={formValues}
+                            onSuccess={handleEmailSuccess}
+                            onError={handleEmailError}
+                        />
                     </div>
                 </div>
             </div>
@@ -285,4 +279,4 @@ const PopupForm: React.FC<PopupFormProps> = ({ onClose, onSubmit }) => {
     );
 };
 
-export default PopupForm;
+export default BookingPopupForm;

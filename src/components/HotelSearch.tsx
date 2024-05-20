@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-//import { RootState } from "../redux/store";
 import { performSearch, setResults } from "../redux/slices/searchSlice";
 import { selectAllHotels } from "../redux/slices/hotelSlice";
 

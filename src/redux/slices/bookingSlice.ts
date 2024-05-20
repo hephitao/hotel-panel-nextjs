@@ -1,18 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-interface Booking {
-  id: string;
-  hotelId: string;
-  hotelName: string;
-  roomId: string;
-  roomName: string;
-  checkinDate: string;
-  checkoutDate: string;
-}
-
-interface BookingsState {
-  data: Booking[];
-}
+import { BookingsState } from '../../types/index';
 
 const initialState: BookingsState = {
   data: [],

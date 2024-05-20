@@ -1,13 +1,10 @@
-// redux/slices/authSlice.ts
+// src/redux/slices/authSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { AuthState } from '../../types';
 
-interface AuthState {
-  isLoggedIn: boolean;
-  userType: 'huesped' | 'agente' | null;
-}
 
 const initialState: AuthState = {
-  isLoggedIn: false,
+  isAuthenticated: false,
   userType: null,
 };
 
@@ -15,12 +12,12 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    login: (state, action: PayloadAction<'huesped' | 'agente'>) => {
-      state.isLoggedIn = true;
+    login(state, action: PayloadAction<'huesped' | 'agente'>) {
+      state.isAuthenticated = true;
       state.userType = action.payload;
     },
-    logout: (state) => {
-      state.isLoggedIn = false;
+    logout(state) {
+      state.isAuthenticated = false;
       state.userType = null;
     },
   },

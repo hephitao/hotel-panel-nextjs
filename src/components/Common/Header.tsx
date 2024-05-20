@@ -5,7 +5,7 @@ import { logout } from '../../redux/slices/authSlice';
 import { RootState } from '../../redux/store';
 
 const Header: React.FC = () => {
-    const { isLoggedIn, userType } = useSelector((state: RootState) => state.auth);
+    const { isAuthenticated, userType } = useSelector((state: RootState) => state.auth);
     const dispatch = useDispatch();
 
     const handleLogout = () => {
@@ -35,7 +35,7 @@ const Header: React.FC = () => {
                     )}
                 </ul>
                 <div>
-                    {isLoggedIn ? (
+                    {isAuthenticated ? (
                         <div className="flex items-center space-x-4">
                             <span className="font-semibold">
                                 Bienvenido {userType === 'huesped' ? 'Huésped' : 'Agente'}

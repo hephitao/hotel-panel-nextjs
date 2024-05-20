@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-//import { RootState } from "../redux/store";
 import HotelSearch from "./HotelSearch";
 import { selectFilteredHotels } from "../redux/slices/searchSlice";
 import { Link } from "react-router-dom";
@@ -11,7 +10,7 @@ const HotelList: React.FC = () => {
 
     return (
         <div className="container mx-auto py-8">
-            <h1 className="text-5xl text-center font-bold mb-6">Smart Hotels</h1>
+            <h1 className="text-5xl text-center font-bold mb-6">🏨 Smart Hotels 🏨</h1>
             <HotelSearch />
             <div className="grid grid-cols-2 gap-6">
                 {filteredHotels.map((hotel) => (
@@ -27,6 +26,7 @@ const HotelList: React.FC = () => {
                         <div className="p-4">
                             <h3 className="text-xl font-semibold mb-2">{hotel?.name}</h3>
                             <h4 className="text-rose-500 mb-4">{hotel?.city}</h4>
+                            <h4 className="text-gray-500 mb-4">{hotel?.location}</h4>
                             <p className="text-gray-700 mb-4">⭐⭐⭐⭐⭐ (5)</p>
                             <p className="text-gray-700 mb-4">{hotel?.description}</p>
                             <Link

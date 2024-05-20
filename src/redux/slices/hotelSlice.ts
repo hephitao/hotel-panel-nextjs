@@ -1,21 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import hotelsData from "../../data/hotels.json";
 import { RootState } from "../store";
-
-export interface Hotel {
-    id: string;
-    name: string;
-    description: string;
-    rooms: string[];
-    city: string;
-    status: string;
-    imgurl: string;
-}
-
-interface HotelsState {
-    allHotels: Hotel[];
-    details: Hotel | null;
-}
+import { Hotel, HotelsState } from '../../types/index';
 
 const initialState: HotelsState = {
     allHotels: hotelsData,
@@ -37,6 +23,7 @@ const hotelsSlice = createSlice({
         },
         addHotel: (state, action: PayloadAction<Hotel>) => {
             state.allHotels.push(action.payload);
+
         },
         updateHotel: (state, action: PayloadAction<Hotel>) => {
             const index = state.allHotels.findIndex(hotel => hotel.id === action.payload.id);

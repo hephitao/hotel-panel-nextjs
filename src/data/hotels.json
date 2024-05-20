@@ -12,7 +12,8 @@
         "city": "Cartagena",
         "status": "active",
         "imgurl": "https://i.ibb.co/n7jjty1/demohotels1.jpg",
-        "admin": "agente@gmail.com"
+        "admin": "agente@gmail.com",
+        "location": "Cl 27 # 23-43"
     },
     {
         "id": "2",
@@ -26,7 +27,8 @@
         "city": "Santa Marta",
         "status": "active",
         "imgurl": "https://i.ibb.co/C6QQPzB/demohotels2.jpg",
-        "admin": "agente@gmail.com"
+        "admin": "agente@gmail.com",
+        "location": "Cl 65 # 44-47"
     },
     {
         "id": "3",
@@ -40,7 +42,8 @@
         "city": "Medellin",
         "status": "active",
         "imgurl": "https://i.ibb.co/pZVpN1p/demohotels3.jpg",
-        "admin": "agente@gmail.com"
+        "admin": "agente@gmail.com",
+        "location": "Cra 25 # 11-12"
     },
     {
         "id": "4",
@@ -54,6 +57,7 @@
         "city": "Monteria",
         "status": "active",
         "imgurl": "https://i.ibb.co/hs5nbTh/demohotels4.jpg",
-        "admin": "otroagente@gmail.com"
+        "admin": "otroagente@gmail.com",
+        "location": "Cl 1 # 44-55"
     }
 ]

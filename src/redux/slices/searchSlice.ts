@@ -1,19 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from '../store';
 import { createSelector } from 'reselect';
-//import { Hotel } from './hotelSlice';
-
-interface SearchCriteria {
-  city: string;
-  startDate: string;
-  endDate: string;
-  guests: number;
-}
-
-interface SearchState {
-  criteria: SearchCriteria;
-  results: string[];
-}
+import { SearchCriteria, SearchState } from '../../types/index';
 
 const initialState: SearchState = {
   criteria: {

@@ -2,10 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import BookingForm from "./BookingForm";
+import { RoomListProps } from '../types/index';
 
-interface RoomListProps {
-    hotelId: string;
-}
 
 const RoomList: React.FC<RoomListProps> = ({ hotelId }) => {
     const rooms = useSelector((state: RootState) =>
@@ -27,14 +25,14 @@ const RoomList: React.FC<RoomListProps> = ({ hotelId }) => {
                             src={room.imgurl}
                             alt={room.name}
                             className="w-full h-48 object-cover hover:scale-110 transition-transform duration-500 ease-in-out"
-                            // className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500 ease-in-out"
                         />
                         <div className="p-6">
                             <h4 className="text-xl font-semibold mb-2">{room.name}</h4>
                             <p className="text-gray-700 mb-4">{room.description}</p>
                             <p className="text-gray-700 font-semibold mb-4">
-                                Precio: ${room.price} COP x Noche
+                                Precio: ${room.price + (room.price * (room.tax/100))} COP x Noche
                             </p>
+                            <p className="text-gray-700 mb-4">Ubicación: {room.location}</p>
                             <BookingForm hotelId={hotelId} roomId={room.id.toString()} />
                         </div>
                     </div>

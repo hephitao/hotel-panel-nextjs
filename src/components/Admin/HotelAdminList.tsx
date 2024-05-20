@@ -2,16 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { Link } from "react-router-dom";
+import { Hotel } from '../../types/index';
 
-interface Hotel {
-    id: string;
-    name: string;
-    description: string;
-    rooms: string[];
-    city: string;
-    status: string;
-    imgurl: string;
-}
 
 const HotelAdminList: React.FC = () => {
     const hotels = useSelector((state: RootState) => state.hotels.allHotels);
@@ -39,15 +31,21 @@ const HotelAdminList: React.FC = () => {
                             <td className="px-6 py-4 whitespace-nowrap space-x-2">
                                 <Link
                                     to={`/hotel-admin/hotel-list/${hotel.id}`}
-                                    className="bg-rose-500 text-white py-2 px-4 rounded-md hover:bg-rose-700 transition-colors"
+                                    className="bg-rose-400 text-white py-2 px-4 rounded-md hover:bg-rose-500 transition-colors"
                                 >
                                     Editar Hotel
                                 </Link>
                                 <Link
                                     to={`/hotel-admin/hotel-list/${hotel.id}/rooms`}
-                                    className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
+                                    className="bg-rose-400 text-white py-2 px-4 rounded-md hover:bg-rose-500 transition-colors"
                                 >
                                     Editar Habitaciones
+                                </Link>
+                                <Link
+                                    to={`/hotel-admin/hotel-list/${hotel.id}/add-room`}
+                                    className="bg-rose-400 text-white py-2 px-4 rounded-md hover:bg-rose-500 transition-colors"
+                                >
+                                    Agregar Habitaciones
                                 </Link>
                             </td>
                         </tr>

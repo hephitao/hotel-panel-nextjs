@@ -1,4 +1,3 @@
-// components/LoginForm.tsx
 import React, { useState, FormEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -37,7 +36,7 @@ const LoginForm: React.FC = () => {
     };
 
     if (redirectTo) {
-        return <Navigate to={redirectTo} replace />; // Usa Navigate en lugar de Redirect
+        return <Navigate to={redirectTo} replace />;
     }
 
     return (

@@ -1,22 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../redux/store";
-import { addHotel, Hotel } from "../redux/slices/hotelSlice";
-import { addRoom, Room as RoomData } from "../redux/slices/roomSlice";
-
-interface RoomForm {
-    cost: string;
-    tax: string;
-    roomType: string;
-    location: string;
-    imgurl: string;
-}
+import { RootState } from "../../redux/store";
+import { addHotel } from "../../redux/slices/hotelSlice";
+import { addRoom } from "../../redux/slices/roomSlice";
+import { Room, Hotel } from '../../types/index';
 
 const CreateHotel: React.FC = () => {
     const dispatch = useDispatch();
     const hotels = useSelector((state: RootState) => state.hotels.allHotels);
     const rooms = useSelector((state: RootState) => state.rooms.data);
-    const [form, setForm] = useState<Hotel & { roomsForm: RoomForm[] }>({
+    const [form, setForm] = useState<Hotel & { roomsForm: Room[] }>({
         id: "",
         name: "",
         city: "",
@@ -24,6 +17,7 @@ const CreateHotel: React.FC = () => {
         rooms: [],
         status: "active",
         imgurl: "",
+        location: "",
         roomsForm: []
     });
 
@@ -32,7 +26,7 @@ const CreateHotel: React.FC = () => {
         setForm(prevForm => ({
             ...prevForm,
             id: (lastHotelId + 1).toString(),
-            roomsForm: [{ cost: '', tax: '', roomType: '', location: '', imgurl: '' }]
+            roomsForm: [{ id: '', name: '', description: '', price: 0, status: 'active', imgurl: '', tax: 0, location: '' }]
         }));
     }, [hotels]);
 
@@ -51,28 +45,29 @@ const CreateHotel: React.FC = () => {
     const addRoomToForm = () => {
         setForm(prevForm => ({
             ...prevForm,
-            roomsForm: [...prevForm.roomsForm, { cost: '', tax: '', roomType: '', location: '', imgurl: '' }]
+            roomsForm: [...prevForm.roomsForm, { id: '', name: '', description: '', price: 0, status: 'active', imgurl: '', tax: 0, location: '' }]
         }));
     };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (form.name && form.city && form.description && form.imgurl && form.roomsForm.length > 0 && form.roomsForm.every(room => room.cost && room.tax && room.roomType && room.location && room.imgurl)) {
+        if (form.name && form.city && form.description && form.imgurl && form.roomsForm.length > 0 && form.roomsForm.every(room => room.name && room.description && room.price && room.status && room.location && room.imgurl && room.tax)) {
             const newRoomIds: string[] = [];
             form.roomsForm.forEach((roomForm, index) => {
                 const lastRoomId = rooms.length ? rooms[rooms.length - 1].id : 0;
                 const newRoomId = Number(lastRoomId) + 1 + index;
                 const newRoomIdString = newRoomId.toString();
 
-                const newRoom: RoomData = {
-                    id: (newRoomId).toString(),
-                    name: roomForm.roomType,
-                    description: roomForm.location,
-                    price: parseFloat(roomForm.cost) + parseFloat(roomForm.tax),
+                const newRoom: Room = {
+                    id: newRoomIdString,
+                    name: roomForm.name,
+                    description: roomForm.description,
+                    price: roomForm.price,
                     status: "active",
-                    imgurl: roomForm.imgurl
+                    imgurl: roomForm.imgurl,
+                    tax: roomForm.tax,
+                    location: roomForm.location
                 };
-
                 dispatch(addRoom(newRoom));
                 newRoomIds.push(newRoomIdString);
             });
@@ -84,7 +79,8 @@ const CreateHotel: React.FC = () => {
                 rooms: newRoomIds,
                 city: form.city,
                 status: "active",
-                imgurl: form.imgurl
+                imgurl: form.imgurl,
+                location: form.location,
             };
 
             dispatch(addHotel(newHotel));
@@ -96,7 +92,8 @@ const CreateHotel: React.FC = () => {
                 rooms: [],
                 status: "active",
                 imgurl: "",
-                roomsForm: [{ cost: '', tax: '', roomType: '', location: '', imgurl: '' }]
+                location: "",
+                roomsForm: [{ id: '', name: '', description: '', price: 0, status: 'active', imgurl: '', tax: 0, location: '' }]
             });
         } else {
             console.error('Todos los campos son requeridos, incluyendo la URL de la imagen y al menos una habitación');
@@ -175,17 +172,39 @@ const CreateHotel: React.FC = () => {
                         <div className="md:col-span-1">
                             <input
                                 type="text"
-                                name="cost"
-                                value={room.cost}
+                                name="name"
+                                value={room.name}
                                 onChange={(e) => handleRoomFormChange(index, e)}
                                 required
-                                placeholder="Costo"
+                                placeholder="Nombre de la habitación"
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             />
                         </div>
                         <div className="md:col-span-1">
                             <input
                                 type="text"
+                                name="description"
+                                value={room.description}
+                                onChange={(e) => handleRoomFormChange(index, e)}
+                                required
+                                placeholder="Descripción"
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            />
+                        </div>
+                        <div className="md:col-span-1">
+                            <input
+                                type="number"
+                                name="price"
+                                value={room.price}
+                                onChange={(e) => handleRoomFormChange(index, e)}
+                                required
+                                placeholder="Precio"
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            />
+                        </div>
+                        <div className="md:col-span-1">
+                            <input
+                                type="number"
                                 name="tax"
                                 value={room.tax}
                                 onChange={(e) => handleRoomFormChange(index, e)}
@@ -194,20 +213,6 @@ const CreateHotel: React.FC = () => {
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             />
                         </div>
-                        <div className="md:col-span-1">
-                            <select
-                                name="roomType"
-                                value={room.roomType}
-                                onChange={(e) => handleRoomFormChange(index, e)}
-                                required
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            >
-                                <option value="Sencilla">Sencilla</option>
-                                <option value="Doble">Doble</option>
-                                <option value="Familiar">Familiar</option>
-                            </select>
-                        </div>
-
                         <div className="md:col-span-1">
                             <input
                                 type="text"
@@ -231,8 +236,8 @@ const CreateHotel: React.FC = () => {
                             />
                         </div>
                     </div>
-
                 ))}
+
                 <div>
                     <button
                         type="submit"
@@ -245,5 +250,4 @@ const CreateHotel: React.FC = () => {
         </div>
     );
 }
-
 export default CreateHotel;
