@@ -62,11 +62,11 @@ const RoomAdd: React.FC = () => {
     };
 
     return (
-        <div>
+        <div className="max-w-md justify-start">
             <h1 className="text-3xl font-bold mb-6">Agregar Habitación al Hotel: {hotelId}</h1>
             <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="md:col-span-1">
+                <div className="grid grid-cols-1 gap-6">
+                    <div>
                         <input
                             type="text"
                             name="name"
@@ -77,7 +77,7 @@ const RoomAdd: React.FC = () => {
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         />
                     </div>
-                    <div className="md:col-span-1">
+                    <div>
                         <input
                             type="text"
                             name="description"
@@ -88,7 +88,10 @@ const RoomAdd: React.FC = () => {
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         />
                     </div>
-                    <div className="md:col-span-1">
+                    <div>
+                        <label className="block text-gray-700 font-bold mb-2" htmlFor="price">
+                            Precio:
+                        </label>
                         <input
                             type="number"
                             name="price"
@@ -99,7 +102,10 @@ const RoomAdd: React.FC = () => {
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         />
                     </div>
-                    <div className="md:col-span-1">
+                    <div>
+                        <label className="block text-gray-700 font-bold mb-2" htmlFor="tax">
+                            Impuesto:
+                        </label>
                         <input
                             type="number"
                             name="tax"
@@ -110,7 +116,7 @@ const RoomAdd: React.FC = () => {
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         />
                     </div>
-                    <div className="md:col-span-1">
+                    <div>
                         <input
                             type="text"
                             name="location"
@@ -121,7 +127,7 @@ const RoomAdd: React.FC = () => {
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         />
                     </div>
-                    <div className="md:col-span-1">
+                    <div>
                         <input
                             type="text"
                             name="imgurl"
@@ -144,6 +150,6 @@ const RoomAdd: React.FC = () => {
             </form>
         </div>
     );
-}
+};
 
 export default RoomAdd;

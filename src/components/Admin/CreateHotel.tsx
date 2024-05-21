@@ -101,7 +101,7 @@ const CreateHotel: React.FC = () => {
     };
 
     return (
-        <div>
+        <div className="max-w-md justify-start">
             <h1 className="text-3xl font-bold mb-6">Crear Nuevo Hotel</h1>
             <form onSubmit={handleSubmit} className="space-y-6">
                 <input type="hidden" name="id" value={form.id} />
@@ -168,76 +168,87 @@ const CreateHotel: React.FC = () => {
                     </button>
                 </div>
                 {form.roomsForm.map((room, index) => (
-                    <div key={index} className="grid grid-cols-1 md:grid-cols-5 gap-6">
-                        <div className="md:col-span-1">
+                    <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+                                Nombre de la habitación
+                            </label>
                             <input
                                 type="text"
                                 name="name"
                                 value={room.name}
                                 onChange={(e) => handleRoomFormChange(index, e)}
                                 required
-                                placeholder="Nombre de la habitación"
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             />
                         </div>
-                        <div className="md:col-span-1">
+                        <div>
+                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+                                Descripción
+                            </label>
                             <input
                                 type="text"
                                 name="description"
                                 value={room.description}
                                 onChange={(e) => handleRoomFormChange(index, e)}
                                 required
-                                placeholder="Descripción"
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             />
                         </div>
-                        <div className="md:col-span-1">
+                        <div>
+                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="price">
+                                Precio
+                            </label>
                             <input
                                 type="number"
                                 name="price"
                                 value={room.price}
                                 onChange={(e) => handleRoomFormChange(index, e)}
                                 required
-                                placeholder="Precio"
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             />
                         </div>
-                        <div className="md:col-span-1">
+                        <div>
+                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="tax">
+                                Impuesto
+                            </label>
                             <input
                                 type="number"
                                 name="tax"
                                 value={room.tax}
                                 onChange={(e) => handleRoomFormChange(index, e)}
                                 required
-                                placeholder="Impuesto"
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             />
                         </div>
-                        <div className="md:col-span-1">
+                        <div>
+                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="location">
+                                Ubicación
+                            </label>
                             <input
                                 type="text"
                                 name="location"
                                 value={room.location}
                                 onChange={(e) => handleRoomFormChange(index, e)}
                                 required
-                                placeholder="Ubicación"
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             />
                         </div>
-                        <div className="md:col-span-1">
+                        <div>
+                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="imgurl">
+                                Imagen URL
+                            </label>
                             <input
                                 type="text"
                                 name="imgurl"
                                 value={room.imgurl}
                                 onChange={(e) => handleRoomFormChange(index, e)}
                                 required
-                                placeholder="Imagen URL"
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             />
                         </div>
                     </div>
                 ))}
-
                 <div>
                     <button
                         type="submit"
@@ -249,5 +260,6 @@ const CreateHotel: React.FC = () => {
             </form>
         </div>
     );
-}
+};
+
 export default CreateHotel;

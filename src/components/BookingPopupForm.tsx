@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import EmailSender from './EmailSender';
 import { FormValues, BookingPopupFormProps } from '../types/index';
+import EmailPopup from '../components/Common/EmailPopup';
 
 const BookingPopupForm: React.FC<BookingPopupFormProps> = ({ onClose, onSubmit }) => {
     const [formValues, setFormValues] = useState<FormValues>({
@@ -17,6 +18,8 @@ const BookingPopupForm: React.FC<BookingPopupFormProps> = ({ onClose, onSubmit }
             telefono: "",
         },
     });
+
+    const [isEmailPopupOpen, setIsEmailPopupOpen] = useState(false);
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -43,6 +46,15 @@ const BookingPopupForm: React.FC<BookingPopupFormProps> = ({ onClose, onSubmit }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setIsEmailPopupOpen(true);
+    };
+
+    const handleEmailSubmit = (email: string) => {
+        setFormValues((prevValues) => ({
+            ...prevValues,
+            email,
+        }));
+        setIsEmailPopupOpen(false);
         onSubmit(formValues);
     };
 
@@ -53,7 +65,6 @@ const BookingPopupForm: React.FC<BookingPopupFormProps> = ({ onClose, onSubmit }
     const handleEmailError = (error: Error) => {
         console.error("Error sending email:", error.message);
     };
-
 
     return (
         <div className="fixed inset-0 bg-gray-500 bg-opacity-75 overflow-y-auto">
@@ -248,7 +259,6 @@ const BookingPopupForm: React.FC<BookingPopupFormProps> = ({ onClose, onSubmit }
                                             />
                                         </div>
                                     </div>
-
                                     <div className="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                                         <button
                                             type="submit"
@@ -275,6 +285,13 @@ const BookingPopupForm: React.FC<BookingPopupFormProps> = ({ onClose, onSubmit }
                     </div>
                 </div>
             </div>
+            {isEmailPopupOpen && (
+                <EmailPopup
+                    isOpen={isEmailPopupOpen}
+                    onClose={() => setIsEmailPopupOpen(false)}
+                    onSubmit={handleEmailSubmit}
+                />
+            )}
         </div>
     );
 };

@@ -42,8 +42,8 @@ const HotelSearch: React.FC = () => {
 
     return (
         <div className="container mx-auto py-8">
-            <h2 className="text-3xl font-bold mb-6">Buscar Hoteles</h2>
             <div className="flex flex-col md:flex-row gap-4 mb-4 items-center">
+            <h2 className="p-2 text-2xl rounded-md">Buscar Hoteles: </h2>
                 <select
                     value={city}
                     onChange={(e) => setCity(e.target.value)}

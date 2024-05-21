@@ -108,3 +108,9 @@ export interface SearchState {
     criteria: SearchCriteria;
     results: string[];
 }
+
+export interface EmailPopupProps {
+    isOpen: boolean;
+    onClose: () => void;
+    onSubmit: (email: string) => void;
+}
