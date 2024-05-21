@@ -27,7 +27,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '14' # Cambiado a una versión compatible
 
       - name: Build And Deploy
         id: builddeploy
@@ -38,7 +38,7 @@ jobs:
           action: "upload"
           app_location: "/" 
           api_location: "" 
-          output_location: "build"  # Cambia esto si la carpeta de salida es diferente
+          output_location: "dist/fe-smart-travel" # Cambiado a la ubicación correcta
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
