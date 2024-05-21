@@ -48,6 +48,26 @@ Para desplegar este proyecto usa
   npm run dev
 ```
 
+## Accesos
+
+### Como usuario
+
+Se puede generar reservas sin loguearse
+
+```txt
+Usuario: huesped@test.com
+constraseña: password
+```
+
+### Como Agente
+
+Al ingresar se habilita el panel administrativo
+
+```txt
+Usuario: agente@test.com
+constraseña: password
+```
+
 ## Demo
 
 [Ir a demo en azure](https://red-tree-0bf56cf0f.5.azurestaticapps.net/)

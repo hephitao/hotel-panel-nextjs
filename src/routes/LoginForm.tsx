@@ -19,8 +19,8 @@ const LoginForm: React.FC = () => {
     const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         const { email, password } = formValues;
-        const isHuesped = selectedTab === 0 && email === 'huesped@gmail.com' && password === 'password';
-        const isAgente = selectedTab === 1 && email === 'agente@gmail.com' && password === 'password';
+        const isHuesped = selectedTab === 0 && email === 'huesped@test.com' && password === 'password';
+        const isAgente = selectedTab === 1 && email === 'agente@test.com' && password === 'password';
 
         if (isHuesped) {
             dispatch(login('huesped'));
