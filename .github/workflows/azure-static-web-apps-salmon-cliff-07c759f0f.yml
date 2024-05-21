@@ -24,6 +24,9 @@ jobs:
       - name: Remove git extraheader
         run: git config --unset-all http.https://github.com/.extraheader || true
 
+      - name: Install apt-utils
+        run: sudo apt-get update && sudo apt-get install -y apt-utils
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
