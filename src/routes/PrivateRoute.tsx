@@ -10,6 +10,7 @@ const PrivateRoute: React.FC = () => {
     const menuItems = [
         { name: "Mis hoteles", path: "hotel-list" },
         { name: "Crear Nuevo Hotel", path: "create-hotel" },
+        { name: "Ver mis reservas", path: "my-bookings" },
     ];
 
     return isAuthenticated ? (

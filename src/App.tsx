@@ -7,6 +7,7 @@ import HotelDetails from "./components/HotelDetails";
 import HotelList from "./components/HotelList";
 import LoginForm from "./routes/LoginForm";
 import CreateHotel from "./components/Admin/CreateHotel";
+import BookingsAdmin from "./components/Admin/BookingsAdmin";
 import HotelAdminList from "./components/Admin/HotelAdminList";
 import HotelEdit from './components/Admin/HotelEdit';
 import RoomEdit from './components/Admin/RoomEdit';
@@ -25,10 +26,12 @@ const App: React.FC = () => {
           <Route path="/hotel-admin/*" element={<PrivateRoute />}>
             <Route index element={<Navigate replace to="hotel-list" />} />
             <Route path="create-hotel" element={<CreateHotel />} />
+            <Route path="my-bookings" element={<BookingsAdmin />} />
             <Route path="hotel-list" element={<HotelAdminList />} />
             <Route path="hotel-list/:hotelId" element={<HotelEdit />} />
             <Route path="hotel-list/:hotelId/rooms" element={<RoomEdit />} />
             <Route path="hotel-list/:hotelId/add-room" element={<RoomAdd />} />
+
           </Route>
           <Route path="/" element={<HotelList />} />
         </Routes>
