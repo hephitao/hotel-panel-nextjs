@@ -1,6 +1,4 @@
-# Smart Hotels 🏨
-
-## Prueba técnica para Smart Talent
+# Hotels 🏨 Basic Admin panel Next.js
 
 ### Features
 
